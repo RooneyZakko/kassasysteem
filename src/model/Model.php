@@ -74,6 +74,44 @@ class Model
         }
     }
 
+
+/**
+     * Update de gegeven gegevens in database op basis van de opgegeven voorwaarden
+     *
+     * @param array $data Gegevens om bij te werken
+     * @param array $conditions Voorwaarden waaraan moet worden voldaan voor de update
+     * @return bool True als de update is geslaagd, anders false
+     */
+    public function update(array $data, array $conditions): bool
+    {
+        $query = "UPDATE " . static::$tableName . " SET ";
+
+        foreach ($data as $key => $value) {
+            $query .= "$key=:$key, ";
+        }
+
+        $query = rtrim($query, ', ');
+
+        $query .= " WHERE ";
+
+        foreach ($conditions as $key => $value) {
+            $query .= "$key=:$key AND ";
+        }
+
+        $query = rtrim($query, ' AND ');
+
+        $s = $this->db->getPreparedStatement($query);
+
+        $params = array_merge($data, $conditions);
+
+        $s->execute($params);
+
+        return true; // Return true als de update is geslaagd
+    }
+
+
+
+
     /**
      * Get all items
      * Conditions are combined by logical AND

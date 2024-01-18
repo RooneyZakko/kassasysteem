@@ -1,5 +1,7 @@
 <?php
 
+// Bestelling.php
+
 namespace Acme\classes;
 
 use Acme\model\ProductTafelModel;
@@ -7,7 +9,7 @@ use DateTime;
 
 class Bestelling
 {
-    private int $idTafel;
+    private $idTafel;
     private array $products; // array van idproduct type int
     private bool $paid;
     private int $dateTime;
@@ -16,7 +18,7 @@ class Bestelling
     {
         $this->idTafel = $idTafel;
         $this->products = array();
-        $this->dateTime = (new DateTime)->getTimestamp();
+        $this->dateTime = time(); // Gebruik time() om de huidige timestamp te krijgen
     }
 
     /**
@@ -46,9 +48,17 @@ class Bestelling
     {
         return [
             'idtafel'  => $this->idTafel,  // int
-            "products" => $this->products, //array van idproducts
+            "products" => $this->products, // array van idproducts
             "datetime" => $this->dateTime  // int
         ];
     }
 
+    /**
+     * Verwerk de bestelling en sla deze op in de database
+     */
+    public function processOrder(): void
+    {
+        // Voer hier de logica uit om de bestelling te verwerken en op te slaan in de database
+        $this->saveBestelling();
+    }
 }

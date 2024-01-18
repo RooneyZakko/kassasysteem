@@ -13,7 +13,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `kassasysteem`
 --
-CREATE DATABASE IF NOT EXISTS `kassasysteem` DEFAULT CHARACTER SET utf8 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS `kassasysteem` ;
 USE `kassasysteem`;
 
 -- --------------------------------------------------------
@@ -27,7 +27,7 @@ CREATE TABLE `product` (
   `idproduct` int NOT NULL,
   `naam` varchar(255) NOT NULL,
   `prijs` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens voor tabel `product`
@@ -68,7 +68,7 @@ CREATE TABLE `product_tafel` (
   `idproduct` int NOT NULL,
   `datumtijd` int NOT NULL,
   `betaald` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
 
 -- --------------------------------------------------------
 
@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS `tafel`;
 CREATE TABLE `tafel` (
   `idtafel` int NOT NULL,
   `omschrijving` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens voor tabel `tafel`
